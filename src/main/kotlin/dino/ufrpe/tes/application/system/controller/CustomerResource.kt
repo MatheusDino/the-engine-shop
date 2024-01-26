@@ -1,6 +1,7 @@
 package dino.ufrpe.tes.application.system.controller
 
 import dino.ufrpe.tes.application.system.dto.CostumerDto
+import dino.ufrpe.tes.application.system.dto.CustomerUpdateDto
 import dino.ufrpe.tes.application.system.dto.CustomerView
 import dino.ufrpe.tes.application.system.entity.Customer
 import dino.ufrpe.tes.application.system.service.implementation.CustomerService
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -32,4 +34,12 @@ class CustomerResource(
 
     @DeleteMapping("/{id}")
     fun deleteCustomer(@PathVariable id: Long) = this.customerService.delete(id)
+
+    fun updateCustomer(@RequestParam (value = "customerID") id: Long,
+                       @RequestBody customerUpdateDto: CustomerUpdateDto): CustomerView {
+        val customer: Customer = this.customerService.findById(id)
+        val customerUpdating: Customer = customerUpdateDto.toEntity(customer)
+        val customerUpdated: Customer = this.customerService.saveCustomer(customerUpdating)
+        return CustomerView(customerUpdated)
+    }
 }
