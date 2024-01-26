@@ -2,7 +2,7 @@ package dino.ufrpe.tes.application.system.entity
 
 import jakarta.persistence.*
 
-@Entity(name = "Cliente")
+@Entity(name = "Clientes")
 data class Customer(
     @Column(nullable = false) var firstName: String = "",
 
