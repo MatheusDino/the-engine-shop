@@ -29,5 +29,5 @@ data class Engine(
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null,
 
-    @ManyToOne val customer: Customer? = null
+    @ManyToOne var customer: Customer? = null
 )
