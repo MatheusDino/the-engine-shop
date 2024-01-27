@@ -21,4 +21,4 @@ ALTER TABLE motores
     ADD CONSTRAINT uc_motores_engine_number UNIQUE (engine_number);
 
 ALTER TABLE motores
-    ADD CONSTRAINT FK_MOTORES_ON_CUSTOMER FOREIGN KEY (customer_id) REFERENCES cliente (id);
+    ADD CONSTRAINT FK_MOTORES_ON_CUSTOMER FOREIGN KEY (customer_id) REFERENCES clientes (id);

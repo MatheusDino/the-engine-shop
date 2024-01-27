@@ -10,6 +10,6 @@ import java.util.UUID
 interface EngineRepository: JpaRepository<Engine, Long> {
     fun findByEngineNumber(engineNumber: UUID): Engine?
 
-    @Query(value = "SELECT * FROM  MOTORES WHERE CUSTOMER_ID = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM MOTORES WHERE CUSTOMER_ID = ?1", nativeQuery = true)
     fun findAllByCostumerID(customerId: Long): List<Engine>
 }
