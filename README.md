@@ -17,6 +17,6 @@ Bem vindo a melhor loja de motores da região, só aqui você encontra uma varie
 
 * Gerar uma Nota Fiscal (NF) simplificada associada a compra de um motor.
 
-
+![logicModel.png](logicModel.png)
 
 Obs: A loja é ficticia, não possuo nem conheço uma loja de motores.
