@@ -31,10 +31,10 @@ class EngineResource(
             .body("Motor ${engine.nominationCode} ${engine.name} cadastrado com sucesso!")
     }
 
-    @GetMapping("/{id}")
-    fun findAllByCustomerId(@PathVariable id: Long): ResponseEntity<List<EngineViewList>> {
+    @GetMapping
+    fun findAllByCustomerId(@RequestParam(value = "customerId") customerId: Long): ResponseEntity<List<EngineViewList>> {
         val engineViewList: List<EngineViewList> =
-            this.engineService.findAllByCustomer(id).stream().map { engine: Engine -> EngineViewList(engine) }
+            this.engineService.findAllByCustomer(customerId).stream().map { engine: Engine -> EngineViewList(engine) }
                 .collect(Collectors.toList())
         return ResponseEntity.status(HttpStatus.OK).body(engineViewList)
     }
