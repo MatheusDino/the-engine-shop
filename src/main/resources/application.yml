@@ -1,16 +1,21 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:the_engine_shop_DB
-    username: dino
+    #url: jdbc:h2:mem:the_engine_shop_DB
+    #username: dino
+    driver-class-name: org.postgresql.Driver
+    password: pizzacalabresa
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
   jpa:
     show-sql: true
     hibernate:
       properties:
         hibernate.format_sql: true
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-      settings:
-        trace: false
-        web-allow-others: false
+      ddl-auto: create
+  #h2:
+    #console:
+      #enabled: true
+      #path: /h2-console
+      #settings:
+        #trace: false
+        #web-allow-others: false
