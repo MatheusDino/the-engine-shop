@@ -1,6 +1,7 @@
 package dino.ufrpe.tes.application.system.service.implementation
 
 import dino.ufrpe.tes.application.system.entity.Engine
+import dino.ufrpe.tes.application.system.exception.IdNotFoundException
 import dino.ufrpe.tes.application.system.repositories.EngineRepository
 import dino.ufrpe.tes.application.system.service.InEngineService
 import org.springframework.stereotype.Service
@@ -23,7 +24,7 @@ class EngineService(
 
     override fun findByEngineNumber(customerId: Long, engineNumber: UUID): Engine {
         val engine: Engine = (this.engineRepo.findByEngineNumber(engineNumber)
-            ?: throw RuntimeException("O número de motor $engineNumber não existe."))
-        return if (engine.customer?.id == customerId) engine else throw RuntimeException("Algo está errado. Por favor entre em contato com o suporte.")
+            ?: throw IdNotFoundException("O número de motor $engineNumber não existe."))
+        return if (engine.customer?.id == customerId) engine else throw IllegalArgumentException("Algo está errado. Por favor entre em contato com o suporte.")
     }
 }

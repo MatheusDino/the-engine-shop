@@ -1,12 +1,13 @@
 package dino.ufrpe.tes.application.system.dto
 
 import dino.ufrpe.tes.application.system.entity.Customer
+import jakarta.validation.constraints.NotEmpty
 
 data class CustomerUpdateDto(
-    val firstName: String,
-    val lastName: String,
-    val postalCode: String,
-    val street: String
+    @field:NotEmpty(message = "Por favor digite algo!") val firstName: String,
+    @field:NotEmpty(message = "Por favor digite algo!") val lastName: String,
+    @field:NotEmpty(message = "Por favor digite algo!") val postalCode: String,
+    @field:NotEmpty(message = "Por favor digite algo!") val street: String
 ) {
     fun toEntity(customer: Customer): Customer {
         customer.firstName = this.firstName

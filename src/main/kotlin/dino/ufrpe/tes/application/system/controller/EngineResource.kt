@@ -5,6 +5,7 @@ import dino.ufrpe.tes.application.system.dto.EngineView
 import dino.ufrpe.tes.application.system.dto.EngineViewList
 import dino.ufrpe.tes.application.system.entity.Engine
 import dino.ufrpe.tes.application.system.service.implementation.EngineService
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -25,7 +26,7 @@ class EngineResource(
 ) {
 
     @PostMapping
-    fun saveEngine(@RequestBody engineDto: EngineDto): ResponseEntity<String> {
+    fun saveEngine(@RequestBody @Valid engineDto: EngineDto): ResponseEntity<String> {
         val engine: Engine = this.engineService.saveEngine(engineDto.toEntity())
         return ResponseEntity.status(HttpStatus.CREATED)
             .body("Motor ${engine.nominationCode} ${engine.name} cadastrado com sucesso!")
