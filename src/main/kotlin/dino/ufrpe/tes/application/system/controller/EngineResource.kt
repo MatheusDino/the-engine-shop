@@ -39,7 +39,7 @@ class EngineResource(
         return ResponseEntity.status(HttpStatus.OK).body(engineViewList)
     }
 
-    @GetMapping("/{engineNumber")
+    @GetMapping("/{engineNumber}")
     fun findByEngineNumber(
         @RequestParam(value = "customerId") customerId: Long,
         @PathVariable engineNumber: UUID
